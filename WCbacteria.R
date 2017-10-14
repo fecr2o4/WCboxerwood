@@ -1,12 +1,13 @@
-#This scrip grabs data from a public google doc and public image on my google drive plots the most recent E. coli concentrations on a map (left) with color-coded points,
+#This script grabs data from a public google doc and public image on my google drive plots the most recent E. coli concentrations on a map (left) with color-coded points,
 #on a bar (column) graph (center top) for the most recent sample collection date, on a box plot for sample sites on Woods Creek upstream of Sarahs Run, from Sarahs Run,
 #and Woods Creek downstream of Sarahs Run for all sample collection dates (center bottom), and on a box plot for all samples for all sites (right). Samples are collected 
-#and analysed (counted) by a group of volunteers on the second Tuesday of each month for July 2017 to June 2018
+#and analyzed (counted) by a group of volunteers on the second Tuesday of each month for July 2017 to June 2018
 
 #In a box plot, the black horizontal bar = median, boxes = 25th and 75th percentiles, whiskers (vertical black bars) = 1.5 times the interquartile range, black dots = outliers (may not be present). These are the default settings for R ggplot2 geom_boxplot.
 #dotted line = water quality standard of 235 cfu/100mL used by the VADEQ as the standard that should be exceeded no more than 10.5% of the time at any given sample location
 #weather for 2017-07-11 was hot and sunny with no rain in the past few days
 #the test for SR01 failed in July
+
 
 library(magick)
 library(ggplot2)
