@@ -1,4 +1,4 @@
-#This scrip grabs data from a public google doc and plots the most recent water temperature (left) and conductivity (center) of 
+#This script grabs data from a public google doc and plots the most recent water temperature (left) and conductivity (center) of 
 #Woods Creek (Lexington, Virginia, USA) and some of its tributaries and a comparison of these values to samples collected back to
 #2016-10-25. Samples are mostly collected by me during my morning run and sometimes collected by local school children.
 
