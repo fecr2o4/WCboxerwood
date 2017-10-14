@@ -1,4 +1,8 @@
-#library(dplyr)
+#This script grabs data from a public google sheet and public image on my google drive plots the most recent E. coli sample results on column graph 
+#and on a map of the field area and the watersheds for each sample site (Woods Creek and its larger tributary, Sarahs Run in Lexington, Virginia, 
+#USA) for the most recently collected samples. The dotted horizontal lines and letters (A-D) are "grades" that are used by the Boxerwood Education 
+#Center to provide context to the numbers. As of 10/13/2017, the data in the google sheet for this script are not real.
+
 library(magick)
 library(ggplot2)
 library(grid)
@@ -60,20 +64,18 @@ map <- ggplot ((WClatest),
       plot.background=element_blank())
 
 Ecolicolumn <- ggplot(WClatest, aes(x = Order, y = Ecoli, fill = Category)) + 
-   geom_col() + theme_bw() +
-   scale_fill_manual(values=c("#66cc99", "#999999", "#cc6666")) +
-   geom_text(label = " ") + annotate("text", label = "A", x = 0.5, y = 69, size = 4, color = "red", hjust = 1) +
-     annotate("text", label = "B", x = 0.5, y = 195, size = 4, color = "red", hjust = 1) +
-     annotate("text", label = "C", x = 0.5, y = 321, size = 4, color = "red", hjust = 1) +
-     annotate("text", label = "D", x = 0.5, y = 467, size = 4, color = "red", hjust = 1) +
-     annotate("text", label = "F", x = 0.5, y = 625, size = 4, color = "red", hjust = 1) +
-   geom_hline(yintercept=136, linetype="dashed", color = "red") + 
-   geom_hline(yintercept=254, linetype="dashed", color = "red") +
-   geom_hline(yintercept=388, linetype="dashed", color = "red") +
-   geom_hline(yintercept=546, linetype="dashed", color = "red") +
-   labs(title="Samples from:", subtitle = latestdate, y="E. coli (cfu/100mL)", x="sample site") +
-   theme_bw() +
-   theme(legend.position="none")
+   	geom_col() + 
+	theme_bw() + theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(), plot.background=element_blank(), legend.position="none")+
+	scale_fill_manual(values=c("#66cc99", "#999999", "#cc6666")) +
+   	geom_text(label = " ") + annotate("text", label = "A", x = 0.5, y = 69, size = 4, color = "red", hjust = 1) +
+     	annotate("text", label = "B", x = 0.5, y = 195, size = 4, color = "red", hjust = 1) +
+     	annotate("text", label = "C", x = 0.5, y = 321, size = 4, color = "red", hjust = 1) +
+     	annotate("text", label = "D", x = 0.5, y = 467, size = 4, color = "red", hjust = 1) +
+     	annotate("text", label = "F", x = 0.5, y = 625, size = 4, color = "red", hjust = 1) +
+   	geom_hline(yintercept=136, linetype="dashed", color = "red") + 
+   	geom_hline(yintercept=254, linetype="dashed", color = "red") +
+   	geom_hline(yintercept=388, linetype="dashed", color = "red") +
+   	geom_hline(yintercept=546, linetype="dashed", color = "red") +
+   	labs(title="Samples from:", subtitle = latestdate, y="E. coli (cfu/100mL)", x="sample site")
 
 grid.arrange(Ecolicolumn, map, ncol=2, nrow=1)
-
